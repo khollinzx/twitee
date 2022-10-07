@@ -43,7 +43,7 @@ class Comment extends Model
     /** has many relations */
     public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Post::class, 'post_id');
     }
 
     /** get attribute Comment id

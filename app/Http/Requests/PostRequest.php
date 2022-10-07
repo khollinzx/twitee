@@ -66,16 +66,7 @@ class PostRequest extends FormRequest
     private function validateCommentCreation(): array
     {
         return [
-            'comment' => [
-                'required',
-                'string',
-                'min:30',
-                function($callback)
-                {
-                    if(!$this->post::getPostById($this->post_id))
-                        return $callback("the selected post no long exists");
-                }
-            ]
+            'comment' => 'required|string|min:30'
         ];
     }
 }

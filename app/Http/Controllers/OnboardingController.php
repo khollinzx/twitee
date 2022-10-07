@@ -50,7 +50,7 @@ class OnboardingController extends Controller
             /** proceed to account creation */
             $this->mainModel::createNewUser($validated);
 
-            return JsonAPIResponse::sendSuccessResponse('Congratulations, account creation was successful, kindly check you mail for a verification');
+            return JsonAPIResponse::sendSuccessResponse('Congratulations, account creation was successful, kindly check you mail for a verification', [], 200 );
 
         } catch (\Exception $exception) {
             Log::error($exception);

@@ -31,7 +31,6 @@ class Post extends Model
      */
     protected $relationship = [
         'user',
-        'comments'
     ];
 
     /** has many relations */
@@ -43,7 +42,7 @@ class Post extends Model
     /** has many relations */
     public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'post_id');
     }
 
     /** get attribute Post id
@@ -68,6 +67,15 @@ class Post extends Model
     public function getUserId(): string
     {
         return $this->attributes['user_id'];
+    }
+
+    /** get a post by Id
+     * @param string $postId
+     * @return mixed
+     */
+    public static function findPostById(string $postId)
+    {
+        return self::where('id', $postId)->first();
     }
 
     /** get a post by Id

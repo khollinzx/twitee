@@ -49,7 +49,7 @@ class JsonAPIResponse
      * @param int $status
      * @return JsonResponse
      */
-    public static function sendErrorResponse(string $message = 'error', int $status = 200): JsonResponse
+    public static function sendErrorResponse(string $message = 'error', int $status = 400): JsonResponse
     {
         return response()->json(
             [

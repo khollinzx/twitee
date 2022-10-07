@@ -102,6 +102,9 @@ class PostController extends Controller
 
             $validated = $request->validated();
 
+            if(!$this->mainModel::findPostById($post_id))
+                return JsonAPIResponse::sendErrorResponse("the selected post no long exists");
+
             $Comment = $this->commentModel::createNewComment($validated['comment'], $post_id, $this->getUserId());
 
             return JsonAPIResponse::sendSuccessResponse('Comment created Successfully', $Comment);
